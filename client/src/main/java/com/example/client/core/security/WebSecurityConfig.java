@@ -23,7 +23,7 @@ public class WebSecurityConfig {
             .cors().configurationSource(corsConfigurationSource()).and()
             .csrf().disable()
             .oauth2Login(oauth2Login ->
-                    oauth2Login.loginPage("/oauth2/authorization/gateway-oidc"))
+                    oauth2Login.loginPage("/oauth2/authorization/client-oidc"))
             .oauth2Client(withDefaults());
         return http.build();
     }

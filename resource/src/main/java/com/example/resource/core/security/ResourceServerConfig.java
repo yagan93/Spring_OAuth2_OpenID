@@ -18,6 +18,9 @@ import java.util.List;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ResourceServerConfig {
 
+    private static final String AUTHORITIES_CLAIM_IDENTIFIER = "authorities";
+    private static final String AUTHORITIES_PREFIX = "";
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -45,8 +48,8 @@ public class ResourceServerConfig {
 
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        jwtGrantedAuthoritiesConverter.setAuthoritiesClaimName("authorities");
-        jwtGrantedAuthoritiesConverter.setAuthorityPrefix("");
+        jwtGrantedAuthoritiesConverter.setAuthoritiesClaimName(AUTHORITIES_CLAIM_IDENTIFIER);
+        jwtGrantedAuthoritiesConverter.setAuthorityPrefix(AUTHORITIES_PREFIX);
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwtGrantedAuthoritiesConverter);
         return jwtAuthenticationConverter;

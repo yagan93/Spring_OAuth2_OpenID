@@ -27,7 +27,7 @@ public class ArticleController {
 
     @GetMapping()
     @CircuitBreaker(name = "general", fallbackMethod = "")
-    public Mono<String> getArticle(@RegisteredOAuth2AuthorizedClient("gateway-authorization-code") OAuth2AuthorizedClient authorizedClient) {
+    public Mono<String> getArticle(@RegisteredOAuth2AuthorizedClient("client-authorization-code") OAuth2AuthorizedClient authorizedClient) {
 
         return this.webClient
                 .get()
